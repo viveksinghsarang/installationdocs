@@ -59,6 +59,13 @@ Step 8:- Validate the new Docker root location:
 
 docker info -f '{{ .DockerRootDir}}'
 
+Step 9:- For docker to be accessible from any given user please use the below command:-
+Example:- sudo usermod -aG docker username
+
+Step 10:- We need to install nvidia-container-toolkit for docker to support gpu.
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-yum-or-dnf
+
+
 
 References:-
 
