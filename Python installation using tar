@@ -1,0 +1,54 @@
+Install the prerequisites
+
+yum install zlib -y
+yum install gcc -y
+yum install gcc-c++ -y
+yum install zlib-devel -y
+yum install libffi-devel -y
+yum install libxml2 -y
+yum install libxslt -y
+yum install c++ -y
+yum install make -y
+yum install flex -y
+yum install rpm-build -y
+yum install pkgconfig -y
+yum install gettext -y
+yum install automake -y
+yum install strace64 -y
+yum install strace -y
+yum install gdb -y
+yum install bison -y
+yum install libtool -y
+yum install autoconf -y
+yum install gcc-c++ -y
+yum install binutils -y
+yum install zlib -y
+yum install zlib* -y
+yum install libffi-devel -y
+yum install xz-devel -y
+yum install python-devel -y
+yum install postgresql-devel -y
+yum install farm-haystack -y
+yum install sqlite-devel -y
+yum install bzip2-devel -y
+yum install yajl-dev -y
+yum install libsq3-devel -y
+yum install mysql-devel -y
+yum install bind-utils -y
+yum group install development -y
+
+
+wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz
+tar -xvf Python-3.11.3.tgz
+cd Python-3.11.3
+./configure --prefix=/change_path_as_per_your_need/python/ --enable-optimizations
+make
+make install
+
+Now add the path in the bashrc
+vim .bashrc
+export PATH=$PATH:/change_path_as_per_your_need/python/bin
+alias python=python3
+source .bashrc
+
+python --version
