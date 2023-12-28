@@ -1,13 +1,13 @@
 Step 1:- Whitelist below URLs in the Proxy
 
-	https://auth.docker.io/
-	https://cdn.auth0.com/
-	https://login.docker.com/
-	https://desktop.docker.com/
-	https://hub.docker.com/
-	https://registry-1.docker.io/
-  https://download.docker.com/linux/rhel/docker-ce.repo
-  https://download.docker.com/
+https://auth.docker.io/
+https://cdn.auth0.com/
+https://login.docker.com/
+https://desktop.docker.com/
+https://hub.docker.com/
+https://registry-1.docker.io/
+https://download.docker.com/linux/rhel/docker-ce.repo
+https://download.docker.com/
 
 Step 2:- Uninstall old versions
 
