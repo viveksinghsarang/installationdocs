@@ -1,0 +1,29 @@
+Get the disk details from lsblk or fdisk -l
+vdb    253:16   0  350G  0 disk
+vdc    253:48   0  50G   0 disk
+
+Lets say I will use vdb for /app and vdc for swap
+Create the folder as per need ex:- mkdir /app
+
+Run below command for all disks except swap
+mkfs.xfs /dev/vdb
+
+For creating the swap space
+mkswap /dev/vdd
+swapon /dev/vdd
+
+Check now with free -g command
+
+Run this comand to get the UUID details:- ls /dev/disk/by-uuid -lt
+
+f14aed3e-043a-4e94-9c15-a4f669ac44b6 -> ../../vdd
+f658bd5a-b763-496e-a0cd-d202fcaa5c68 -> ../../vdc
+
+After getting the UUID details add the entry in fstab as below
+vim /etc/fstab
+UUID=f14aed3e-043a-4e94-9c15-a4f669ac44b6 /app xfs defaults 0 0
+UUID=f658bd5a-b763-496e-a0cd-d202fcaa5c68 swap swap defaults 0 0
+
+Then run mount -a to automatically mount the disks.
+To check for any errors run mount -fav
+
