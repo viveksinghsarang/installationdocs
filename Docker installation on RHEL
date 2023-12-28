@@ -1,0 +1,67 @@
+Step 1:- Whitelist below URLs in the Proxy
+
+	https://auth.docker.io/
+	https://cdn.auth0.com/
+	https://login.docker.com/
+	https://desktop.docker.com/
+	https://hub.docker.com/
+	https://registry-1.docker.io/
+  https://download.docker.com/linux/rhel/docker-ce.repo
+  https://download.docker.com/
+
+Step 2:- Uninstall old versions
+
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine \
+                  podman \
+                  runc
+
+Step 3:- Install the yum-utils package (which provides the yum-config-manager utility) and set up the repository.
+
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+Step 4:- To install the latest version, run:
+
+yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+Step 5:- Relocate the Docker root directory by default it will be /var/lib/docker
+
+mkdir -p /data/docker
+vim /etc/docker/daemon.json
+
+{
+  "data-root": "/data/docker"
+}
+
+
+Step 6:- If your server is behind proxy then you need to add proxy in the /etc/systemd/system/docker.service.d/http-proxy.conf file
+
+[Service]
+Environment="HTTP_PROXY=http://proxy.com:8080"
+Environment="HTTPS_PROXY=http://proxy.com:8080"
+Environment="NO_PROXY=server IP"
+
+Step 7:- Start the docker service
+
+systemctl daemon-reload
+systemctl enable docker
+systemctl start docker
+
+
+Step 8:- Validate the new Docker root location:
+
+docker info -f '{{ .DockerRootDir}}'
+
+
+References:-
+
+https://docs.docker.com/desktop/allow-list/
+https://docs.docker.com/engine/install/rhel/
+https://www.ibm.com/docs/en/z-logdata-analytics/5.1.0?topic=compose-relocating-docker-root-directory
