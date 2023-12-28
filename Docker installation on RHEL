@@ -65,6 +65,9 @@ Example:- sudo usermod -aG docker username
 Step 10:- We need to install nvidia-container-toolkit for docker to support gpu.
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-yum-or-dnf
 
+Step 11:- We can also access UI for the docker with the help Portainer:-
+Just execute the below command and you can access it on the browser at 9000 port
+doceker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docekr.sock -v portainer_data:/data portainer/portainer-ce:latest
 
 
 References:-
